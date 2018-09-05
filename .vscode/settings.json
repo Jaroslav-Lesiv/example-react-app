@@ -1,0 +1,7 @@
+{
+    "editor.fontFamily": "SourceCodePro, 'Source Code Pro' , Consolas, 'Courier New', monospace",
+    "vscode_custom_css.imports": [
+        "file:///Users/Jaroslav/vscode/main.css"
+    ],
+    "editor.fontSize": 15
+}
