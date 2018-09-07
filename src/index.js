@@ -4,6 +4,7 @@ import App from "./app";
 import registerServiceWorker from "./registerServiceWorker";
 import createMemoryHistory from "history/createMemoryHistory";
 import { Router } from "react-router";
+import * as store from "./store";
 
 const history = createMemoryHistory({
   initialEntries: ["/"], // The initial URLs in the history stack
@@ -15,10 +16,14 @@ const history = createMemoryHistory({
   getUserConfirmation: null
 });
 
+const { Provider, Consumer } = React.createContext(store);
+export {Consumer}
 ReactDOM.render(
-  <Router history={history}>
-    <App />
-  </Router>,
+  <Provider value={store}>
+    <Router history={history}>
+      <App />
+    </Router>
+  </Provider>,
   document.getElementById("root")
 );
 registerServiceWorker();

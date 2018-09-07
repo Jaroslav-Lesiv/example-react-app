@@ -1,37 +1,57 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Form, Paper } from '../../ui'
-
-export default class LoginForm extends Component {
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import {
+  Paper,
+  LoginForm,
+  LoginFormBlockWrapper,
+  LoginFormBlock,
+  Input
+} from "../../ui";
+import { Button } from "@material-ui/core";
+import { Consumer } from "../../app";
+export default class Form extends Component {
   static propTypes = {
     prop: PropTypes
-  }
+  };
 
   state = {
-      firstname: '',
-      lastname: ''
-  }
+    firstname: "",
+    lastname: ""
+  };
 
   handleChange = name => event => {
-      const { value } = event.target
-      this.setState({ [name]: value })
-  }
+    const { value } = event.target;
+    this.setState({ [name]: value });
+  };
 
   submit = event => {
-      event.preventDefault()
-      console.log(this.state)
-    }
+    event.preventDefault();
+    console.log(this.state);
+  };
 
   render() {
-      const { firstname, lastname } = this.props
+    const { firstname, lastname } = this.props;
     return (
-      <form onSubmit={this.submit}>
-          <Paper>
-              <input value={firstname} onChange={this.handleChange('firstname')} />
-              <input value={lastname} onChange={this.handleChange('lastname')} />
-              <button>Submit</button>
-          </Paper>
-      </form>
-    )
+      <Consumer>
+        <LoginForm onSubmit={this.submit}>
+          <LoginFormBlockWrapper>
+            <LoginFormBlock />
+            <LoginFormBlock>
+              <Input
+                value={firstname}
+                onChange={this.handleChange("firstname")}
+              />
+              <Input
+                value={lastname}
+                onChange={this.handleChange("lastname")}
+              />
+              <Button type={"submit"} color={"white"}>
+                Submit
+              </Button>
+            </LoginFormBlock>
+          </LoginFormBlockWrapper>
+        </LoginForm>
+      </Consumer>
+    );
   }
 }
