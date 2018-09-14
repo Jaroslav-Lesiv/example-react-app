@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import loginBg from '../../assets/images/login-bg.jpg'
-import { Grid } from '@material-ui/core'
+import {Block} from '../'
 const LoginWrapper = styled.div`
     display: flex;
     justify-content: center;
@@ -23,26 +23,27 @@ const LoginForm = styled.form`
     flex-wrap: wrap;
     max-width: 800px;
     flex-grow: 1;
-    border: 1px solid red;
     border-radius: 2px;
     box-shadow: 0 10px 12px 2px rgba(0, 0, 0, 0.2);
     z-index: 2;
-    padding: 5px;
+    padding: 40px;
     background-color: #ffffff;
-`
-
-const LoginFormBlockWrapper = styled(Grid).attrs({
-    container: true,
-    spacing: 16
-})`
 
 `
-const LoginFormBlock = styled(Grid).attrs({
-    item: true,
-    xs: 12,
-    sm: 12,
-    md: 6
-})``
+
+const LoginFormBlockWrapper = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    flex-direction: row;
+`
+const LoginFormBlock = styled(Block)`
+    flex-basis: 320px;
+    justify-content: center;
+    flex-grow: 1;
+    flex-direction: column;
+
+`
 
 export {
     LoginWrapper,

@@ -1,20 +1,24 @@
 import LoginScreen from "../screens/login";
-import HomeScreen from "../screens/login";
-import DocsScreen from "../screens/login";
+import HomeScreen from "../screens/home";
+import DocsScreen from "../screens/docs";
 import { withRouter } from "react-router";
 import { Switch, Route } from "react-router";
 import  React from 'react'
 
+@withRouter
 class AuthRouter extends React.PureComponent {
   render() {
     return (
       <Switch>
         <Route path="/" exact component={LoginScreen} />
+        <Route path="/docs" component={DocsScreen} />
+
       </Switch>
     );
   }
 }
 
+@withRouter
 class UserRouter extends React.PureComponent {
   render() {
     return (
@@ -25,7 +29,6 @@ class UserRouter extends React.PureComponent {
     );
   }
 }
-
 const RootRouter = ({ isLogin }) => (isLogin ? <UserRouter /> : <AuthRouter />);
 
-export { RootRouter };
+export default RootRouter;

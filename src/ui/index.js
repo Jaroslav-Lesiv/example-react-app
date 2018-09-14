@@ -1,5 +1,6 @@
 export * from './constant'
 export * from './main'
+export * from './typography'
 export * from './control'
+export * from './navigation'
 export * from './login'
-export * from './theme'

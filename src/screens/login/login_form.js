@@ -5,10 +5,17 @@ import {
   LoginForm,
   LoginFormBlockWrapper,
   LoginFormBlock,
-  Input
+  Input,
+  Button,
+  H2,
+  H4,
+  Paragraph
 } from "../../ui";
-import { Button } from "@material-ui/core";
-import { Consumer } from "../../app";
+// import { Button } from "@material-ui/core";
+import { user } from "../../store";
+import { observer } from "mobx-react";
+
+@observer
 export default class Form extends Component {
   static propTypes = {
     prop: PropTypes
@@ -26,32 +33,33 @@ export default class Form extends Component {
 
   submit = event => {
     event.preventDefault();
-    console.log(this.state);
+    user.setUser(this.state);
   };
 
   render() {
-    const { firstname, lastname } = this.props;
+    const { firstname, lastname } = this.state;
     return (
-      <Consumer>
-        <LoginForm onSubmit={this.submit}>
-          <LoginFormBlockWrapper>
-            <LoginFormBlock />
-            <LoginFormBlock>
-              <Input
-                value={firstname}
-                onChange={this.handleChange("firstname")}
-              />
-              <Input
-                value={lastname}
-                onChange={this.handleChange("lastname")}
-              />
-              <Button type={"submit"} color={"white"}>
-                Submit
-              </Button>
-            </LoginFormBlock>
-          </LoginFormBlockWrapper>
-        </LoginForm>
-      </Consumer>
+      <LoginForm onSubmit={this.submit}>
+        <LoginFormBlockWrapper>
+          <LoginFormBlock>
+            <H2>Hi my name is Jaroslav</H2>
+            <H4>And i am full stack developer</H4>
+            <Paragraph>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe,
+              ab in eius tempore iure nobis.
+            </Paragraph>
+          </LoginFormBlock>
+          <LoginFormBlock align={"flex-end"}>
+            <Input
+              value={firstname}
+              placeholder={`firstname`}
+              onChange={this.handleChange("firstname")}
+            />
+            <Input value={lastname} placeholder={`lastname`} onChange={this.handleChange("lastname")} />
+            <Button>Submit</Button>
+          </LoginFormBlock>
+        </LoginFormBlockWrapper>
+      </LoginForm>
     );
   }
 }
